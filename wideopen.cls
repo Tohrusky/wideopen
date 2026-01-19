@@ -1,5 +1,4 @@
 % Class declarations
-
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{wideopen}
 \LoadClassWithOptions{article}
@@ -12,7 +11,6 @@
 \ProcessOptions\relax
 
 % Layout
-
 \RequirePackage[top=2.25cm, bottom=2.5cm, left=2.5cm, right=2.5cm, columnsep=0.65cm]{geometry}
 \RequirePackage{microtype}
 \RequirePackage{placeins}
@@ -23,15 +21,13 @@
 \RequirePackage{lipsum}
 \RequirePackage{etoolbox}
 
-\DisableLigatures[f]{family=sf*} 
+\DisableLigatures[f]{family=sf*}
 
 % Graphics
-
 \RequirePackage{graphicx}
 \RequirePackage{subcaption}
 
 % Tables
-
 \RequirePackage{booktabs}
 \RequirePackage{nicematrix}
 \RequirePackage{multirow}
@@ -39,7 +35,6 @@
 \newcommand{\nm}[1]{#1}
 
 % Colorful stuff
-
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{xcolor}
 \definecolor{maincolor}{HTML}{e56b6f}
@@ -47,7 +42,6 @@
 \definecolor{abscolor}{HTML}{023047}
 
 % References
-
 \RequirePackage{hyperref}
 \RequirePackage[noabbrev,nameinlink]{cleveref}
 \hypersetup{
@@ -59,11 +53,10 @@
 
 
 % Title, Section and caption format
-
 \RequirePackage{titlesec}
 
 \if@iclrheader
-\renewcommand{\title}[1]{\newcommand{\titlelist}{{\huge\scshape\bfseries #1}}}
+    \renewcommand{\title}[1]{\newcommand{\titlelist}{{\huge\scshape\bfseries #1}}}
     \titleformat*{\paragraph}{\itshape}
     \titleformat*{\section}{\Large\scshape\bfseries}
     \titleformat*{\subsection}{\large\scshape\bfseries}
@@ -86,16 +79,14 @@
 
 % Meta custom fonts
 % http://c.caignaert.free.fr/Install-ttf-Font.pdf
-
 \renewcommand*\ttdefault{cmvtt}
 \RequirePackage[T1]{fontenc}
 
 % Authors, affiliations, infos
-
 \renewcommand\addtolist[5][]{
     \begingroup
     \if\relax#3\relax\def\sep{}\else\def\sep{#5}\fi
-    \let\protect\@unexpandable@protect 
+    \let\protect\@unexpandable@protect
     \xdef#3{\expandafter{#3}\sep #4[#1]{#2}}%
     \endgroup
 }
@@ -125,7 +116,6 @@
 \newcommand{\beginappendix}{\appendix{\huge\sffamily Appendix\par}}
 
 % Titlebox
-
 \newcommand{\mymaketitle}{
     {
         \setlength{\parindent}{0cm}

@@ -8,9 +8,9 @@ Check out: <u>**[Opening your eyes wide allows you to see more clearly](./WideOp
 
 ### Features
 
-* **Modern Layout**: Inspired by the clean and minimalist aesthetic of industry-leading research labs.
-* **Academic Typography**: Features bold headers and optimized spacing for high readability.
-* **Modular Design**: Organized into a `sec/` folder structure to keep your project clean and manageable.
+- **Modern Layout**: Inspired by the clean and minimalist aesthetic of industry-leading research labs.
+- **Academic Typography**: Features bold headers and optimized spacing for high readability.
+- **Modular Design**: Organized into a `sec/` folder structure to keep your project clean and manageable.
 
 ### Credits
 
