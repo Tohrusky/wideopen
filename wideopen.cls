@@ -4,6 +4,13 @@
 \ProvidesClass{wideopen}
 \LoadClassWithOptions{article}
 
+% Special Style
+\newif\if@iclrheader
+\@iclrheaderfalse
+
+\DeclareOption{iclr}{\@iclrheadertrue}
+\ProcessOptions\relax
+
 % Layout
 
 \RequirePackage[top=2.25cm, bottom=2.5cm, left=2.5cm, right=2.5cm, columnsep=0.65cm]{geometry}
@@ -44,21 +51,32 @@
 \RequirePackage{hyperref}
 \RequirePackage[noabbrev,nameinlink]{cleveref}
 \hypersetup{
-  colorlinks,
-  linkcolor=maincolor,
-  citecolor=maincolor,
-  urlcolor=maincolor
+    colorlinks,
+    linkcolor=maincolor,
+    citecolor=maincolor,
+    urlcolor=maincolor
 }
 
 
-% Section and caption format
+% Title, Section and caption format
 
 \RequirePackage{titlesec}
-\titleformat*{\paragraph}{\itshape}
-\titleformat*{\section}{\Large\scshape\bfseries}
-\titleformat*{\subsection}{\large\scshape\bfseries}
-\titleformat*{\subsubsection}{\normalsize\scshape\bfseries}
-\DeclareTextFontCommand{\textbf}{\bfseries\sffamily}
+
+\if@iclrheader
+\renewcommand{\title}[1]{\newcommand{\titlelist}{{\huge\scshape\bfseries #1}}}
+    \titleformat*{\paragraph}{\itshape}
+    \titleformat*{\section}{\Large\scshape\bfseries}
+    \titleformat*{\subsection}{\large\scshape\bfseries}
+    \titleformat*{\subsubsection}{\normalsize\scshape\bfseries}
+    \DeclareTextFontCommand{\textbf}{\bfseries\sffamily}
+\else
+    \renewcommand{\title}[1]{\newcommand{\titlelist}{{\huge\sffamily\bfseries #1}}}
+    \titleformat*{\paragraph}{\itshape}
+    \titleformat*{\section}{\Large\sffamily\bfseries}
+    \titleformat*{\subsection}{\large\sffamily\bfseries}
+    \titleformat*{\subsubsection}{\normalsize\sffamily\bfseries}
+    \DeclareTextFontCommand{\textbf}{\bfseries\sffamily}
+\fi
 
 \RequirePackage{caption}
 \DeclareCaptionLabelSeparator{custom}{}
@@ -75,11 +93,11 @@
 % Authors, affiliations, infos
 
 \renewcommand\addtolist[5][]{
-  \begingroup
+    \begingroup
     \if\relax#3\relax\def\sep{}\else\def\sep{#5}\fi
     \let\protect\@unexpandable@protect 
     \xdef#3{\expandafter{#3}\sep #4[#1]{#2}}%
-  \endgroup
+    \endgroup
 }
 
 \newcommand\authorlist{}
@@ -104,12 +122,6 @@
 \renewcommand\date[1]{\metadata[Date]{#1}}
 \newcommand\correspondence[1]{\metadata[Correspondence]{#1}}
 
-\renewcommand{\title}[1]{
-  \newcommand{\titlelist}{
-    {\huge\scshape\bfseries #1}
-  }
-}
-
 \newcommand{\beginappendix}{\appendix{\huge\sffamily Appendix\par}}
 
 % Titlebox
@@ -119,46 +131,49 @@
         \setlength{\parindent}{0cm}
         \setlength{\parskip}{0.5cm}
         {
-          \setlength{\parskip}{0cm}
-          \raggedright
-          \nohyphens
-          %
-          {
-            \setstretch{1.618}
-            \titlelist\par
-          }
-          \vskip 0.2cm
-          %
-          \authorlist\par
-          \vskip 0.2cm
-          %
-          \affiliationlist\par
-          %
-          \contributionlist\par
+            \setlength{\parskip}{0cm}
+            \raggedright
+            \nohyphens
+            {
+                \setstretch{1.618}
+                \titlelist\par
+            }
+            \vskip 0.2cm
+            %
+            \authorlist\par
+            \vskip 0.2cm
+            %
+            \affiliationlist\par
+            %
+            \contributionlist\par
         }
+        %
         \vskip 0.25cm
+        %
         {
-          \setlength{\parskip}{0cm}
-          \ifdefempty{\metadatalist}{\vspace*{0.65cm}}{\metadatalist\par}
+            \setlength{\parskip}{0cm}
+            \ifdefempty{\metadatalist}{\vspace*{0.65cm}}{\metadatalist\par}
         }
         %
         \vskip 0.25cm
         \begin{tcolorbox}[
-          enhanced,
-          frame hidden,
-          colback=bgcolor,
-          arc=10pt,
-          left=0.6cm,
-          right=0.6cm,
-          top=0.4cm,
-          bottom=0.5cm
+            enhanced,
+            frame hidden,
+            colback=bgcolor,
+            arc=10pt,
+            left=0.6cm,
+            right=0.6cm,
+            top=0.4cm,
+            bottom=0.5cm
         ]
-        {\color{abscolor}\abstractlist\par}
+        {
+            \color{abscolor}\abstractlist\par
+        }
         \end{tcolorbox}
         \FloatBarrier
     }
 }
 
 \renewcommand{\maketitle}{
-  \mymaketitle
+    \mymaketitle
 }
