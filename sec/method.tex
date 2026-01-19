@@ -1,0 +1,16 @@
+\section{Methodology}
+\label{sec:method}
+
+We propose the \textsc{Active Eyelid Elevation} algorithm. This protocol follows a simple conditional jump instruction based on the threshold $\tau$:
+
+
+\begin{equation}
+    \text{Vision}_{\text{Status}} = 
+    \begin{cases} 
+      \text{Clearly}, & \text{if } \text{Eyelid}_{\text{Height}} > \tau \\
+      \text{Darkness}, & \text{otherwise}
+    \end{cases}
+\end{equation}
+
+
+To achieve "See Better" (SB) status, we recommend lifting the eyelid to its anatomical limit, thereby capturing the maximum possible photon flux. This process effectively converts a binary "Off" sensor into an "On" sensor with zero latency.

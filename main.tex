@@ -1,0 +1,69 @@
+\documentclass[]{wideopen}
+
+% override default color
+\definecolor{maincolor}{HTML}{e56b6f}
+\definecolor{bgcolor}{HTML}{f7e1d7}
+\definecolor{abscolor}{HTML}{22223b}
+
+% reference
+\usepackage[square,numbers]{natbib}
+
+% packages
+\usepackage{graphicx} 
+\usepackage{wrapfig}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{pifont}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{enumitem}
+
+% title
+\title{Opening your eyes wide allows you to see more clearly}
+
+\author[1, \ast, \heartsuit]{Tohrusky}
+\author[2, \ast]{Gemini}
+\author[3, \ast]{ChatGPT}
+
+\affiliation[1]{CloseAI}
+\affiliation[2]{Dicksuck}
+\affiliation[3]{Gulugulu}
+
+\contribution[\ast]{Equal contribution}
+\contribution[\heartsuit]{Project lead}
+
+\date{\today}
+\correspondence{\email{skytohru@gmail.com}}
+
+% You can add additional metadata fields as follows 
+\metadata[Project]{\url{https://github.com/Tohrusky}}
+
+% document
+\begin{document}
+
+% insert abstract before \maketitle
+\input{sec/abs}
+\maketitle
+
+\input{sec/intro}
+\input{sec/related}
+\input{sec/method}
+\input{sec/exp}
+\input{sec/conclusion}
+
+{
+    \small
+    \bibliographystyle{plainnat}
+    \bibliography{main}
+}
+
+% \newpage
+\appendix
+
+\input{sec/appendix}
+
+\end{document}
+
