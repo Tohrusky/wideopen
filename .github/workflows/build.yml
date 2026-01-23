@@ -5,11 +5,11 @@ on:
     branches:
       - main
     paths-ignore:
-      - '**.md'
+      - "**.md"
       - LICENSE
   pull_request:
     paths-ignore:
-      - '**.md'
+      - "**.md"
       - LICENSE
   workflow_dispatch:
 
@@ -20,12 +20,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-            
+
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
-  
+
       - name: Check for LaTeX errors and warnings
         run: |
           if grep -q "^!" main.log; then
@@ -39,7 +39,7 @@ jobs:
           else
             echo "LaTeX build completed successfully without errors or warnings."
           fi
-  
+
       - name: Upload PDF
         uses: actions/upload-artifact@v4
         with:
